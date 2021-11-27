@@ -5,6 +5,9 @@ Text-guided image inpainting aims to complete the corrupted patches coherent wit
 We use [CUB-200-211](http://www.vision.caltech.edu/visipedia/CUB-200-2011.html), [Oxford-102](https://www.robots.ox.ac.uk/~vgg/data/flowers/102/) and [CelebaA-HQ](https://drive.google.com/drive/folders/0B4qLcYyJmiz0TXY1NG02bzZVRGs?resourcekey=0-arAVTUfW9KRhN-irJchVKQ) datasets. 
 ##  Training
 * pre-train: python pretrain.py
+   birds:  https://pan.baidu.com/s/1o_rfXUt4JFLZqTNPSrRetQ    qxx8
+   celeba15000: https://pan.baidu.com/s/18n-kaFq39H5HFyPy4V2gzA    ohws
+   flowers: https://pan.baidu.com/s/1QPDAjzO_1fNlQmUOeOQ-LA    x5pl
 * train: python train.py
 ##  Testing
 * test: python test.py
