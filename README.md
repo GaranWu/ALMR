@@ -10,6 +10,7 @@ We use [CUB-200-211](http://www.vision.caltech.edu/visipedia/CUB-200-2011.html),
 * flowers: https://pan.baidu.com/s/1QPDAjzO_1fNlQmUOeOQ-LA    x5pl
 * 
 * train: python train.py
+* All training models are accidentally lost. After retraining, I will update again.
 ##  Testing
 * test: python test.py
 * FID and KID: python fid_kid_all.py
