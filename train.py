@@ -17,7 +17,7 @@ warnings.filterwarnings("ignore")
 # os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--dataset', type=str, default='birds')  # birds flowers celeba
+parser.add_argument('--dataset', type=str, default='birds')  # birds flowers celeba 
 parser.add_argument('--root', type=str, default='../data/birds')
 parser.add_argument('--save_dir', type=str, default='./model/birds')
 parser.add_argument('--training_image', type=str, default='./training/birds')
@@ -27,7 +27,7 @@ parser.add_argument('--lr', type=float, default=2e-4, help="adam: learning rate"
 parser.add_argument("--b1", type=float, default=0.5, help="adam: decay of first order momentum of gradient")
 parser.add_argument("--b2", type=float, default=0.999, help="adam: decay of first order momentum of gradient")
 parser.add_argument("--threshold", type=float, default=0.8, help="RN_L threshold")
-parser.add_argument('--max_epoch', type=int, default=300)
+parser.add_argument('--max_epoch', type=int, default=400)
 parser.add_argument('--start_epoch', type=int, default=0)
 parser.add_argument('--batch_size', type=int, default=6)
 parser.add_argument('--n_threads', type=int, default=4)
@@ -50,8 +50,8 @@ if not os.path.exists(args.training_image):
 size = (args.image_size, args.image_size)
 train_tf = transforms.Compose([
     transforms.Resize(size),
-    transforms.RandomHorizontalFlip(),
-    transforms.RandomGrayscale(),
+    # transforms.RandomHorizontalFlip(),
+    # transforms.RandomGrayscale(),
 ])
 
 dataset_train = TextDataset(args.root, base_size=args.image_size, CAPTIONS_PER_IMAGE=args.CAPTIONS_PER_IMAGE,
@@ -190,7 +190,7 @@ for i in range(args.start_epoch, args.max_epoch + 1):
         matching_loss = w_loss + s_loss
 
         ################### Text Inpainting Loss ####################
-        pg_loss_t, pd_loss_t = calc_gan_loss(pd_model, refine_result_t, img)
+        pg_loss_t, pd_loss_t = calc_gan_loss(pd_model, refine_result_t, img, real_mask)
 
         recon_loss_t = l1(coarse_result_t, img) + l1(refine_result_t, img) + \
                        l1(coarse_result_t * attn_loss, img * attn_loss) + \

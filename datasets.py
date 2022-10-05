@@ -98,9 +98,6 @@ class TextDataset(data.Dataset):
         self.filenames, self.captions, self.ixtoword, self.wordtoix, self.n_words = self.load_text_data(data_dir, split)
 
         self.class_id = self.load_class_id(split_dir, len(self.filenames))
-        self.number_example = len(self.filenames)
-
-        print(len(self.captions))
 
     def load_captions(self, data_dir, filenames):
         all_captions = []
